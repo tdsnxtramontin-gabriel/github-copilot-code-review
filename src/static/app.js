@@ -1150,5 +1150,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Patch updateAuthUI to also toggle the announcements button
   // (The button lives inside #user-info so it is already hidden when logged out.)
 
+  // Initialize app
+  checkAuthentication();
+  initializeFilters();
+  fetchActivities();
   fetchActiveAnnouncements();
 });
