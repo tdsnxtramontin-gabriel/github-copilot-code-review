@@ -12,9 +12,8 @@
     />
   </head>
   <body>
-    <div class="announcement-banner" role="status" aria-live="polite">
-      <span aria-hidden="true">📢</span>
-      Activity registration is open. Register soon to reserve your spot!
+    <div id="announcements-container" role="status" aria-live="polite">
+      <!-- Active announcements rendered dynamically -->
     </div>
     <header>
       <h1>Mergington High School</h1>
@@ -27,6 +26,10 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="manage-announcements-btn" class="icon-button announcements-btn" title="Manage Announcements">
+              <span aria-hidden="true">📢</span>
+              <span>Announcements</span>
+            </button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
@@ -135,6 +138,54 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcements Management Modal -->
+    <div id="announcements-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="announcements-modal-title">
+      <div class="modal-content announcements-modal-content">
+        <div class="announcements-modal-header">
+          <h3 id="announcements-modal-title">📢 Manage Announcements</h3>
+          <button type="button" class="close-announcements-modal" aria-label="Close">&#10005;</button>
+        </div>
+
+        <!-- Add / Edit form (collapsed by default) -->
+        <div id="announcement-form-section" class="announcement-form-section hidden">
+          <h4 id="announcement-form-title">New Announcement</h4>
+          <form id="announcement-form" novalidate>
+            <div class="form-group">
+              <label for="ann-message">Message <span class="required-mark">*</span></label>
+              <textarea id="ann-message" required rows="3" placeholder="Enter announcement message…"></textarea>
+            </div>
+            <div class="ann-form-dates">
+              <div class="form-group">
+                <label for="ann-start-date">Start Date <span class="optional-mark">(optional)</span></label>
+                <input type="date" id="ann-start-date" />
+              </div>
+              <div class="form-group">
+                <label for="ann-end-date">Expiration Date <span class="required-mark">*</span></label>
+                <input type="date" id="ann-end-date" required />
+              </div>
+            </div>
+            <input type="hidden" id="ann-editing-id" value="" />
+            <div id="ann-form-error" class="hidden ann-form-error"></div>
+            <div class="ann-form-actions">
+              <button type="button" id="ann-cancel-btn" class="ann-secondary-btn">Cancel</button>
+              <button type="submit" id="ann-save-btn" class="ann-primary-btn">Save Announcement</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- List header -->
+        <div class="announcements-list-toolbar">
+          <span id="announcements-count" class="ann-count-label"></span>
+          <button id="add-announcement-btn" class="ann-add-btn">+ Add New</button>
+        </div>
+
+        <!-- Announcements list -->
+        <div id="announcements-mgmt-list">
+          <p class="ann-loading">Loading…</p>
+        </div>
       </div>
     </div>
 
