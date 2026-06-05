@@ -1142,11 +1142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // ─── Show/hide management button based on auth state ────────────────────
-
-  const _originalUpdateAuthUI = updateAuthUI;
-  // Patch updateAuthUI to also toggle the announcements button
-  // (The button lives inside #user-info so it is already hidden when logged out.)
+  // (No additional auth UI patching required here.)
 
   // Initialize app
   checkAuthentication();
