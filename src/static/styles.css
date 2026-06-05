@@ -760,6 +760,8 @@ footer {
   padding: 4px 6px;
   border-radius: 4px;
   transition: background 0.2s;
+  background: transparent;
+  border: none;
 }
 
 .close-announcements-modal:hover {
