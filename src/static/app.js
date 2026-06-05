@@ -881,8 +881,6 @@ document.addEventListener("DOMContentLoaded", () => {
     announcements.forEach((ann) => {
       const banner = document.createElement("div");
       banner.className = "announcement-banner";
-      banner.setAttribute("role", "status");
-
       const expiresLabel = ann.end_date
         ? ` <span class="ann-expires">Expires ${formatAnnDate(ann.end_date)}</span>`
         : "";
