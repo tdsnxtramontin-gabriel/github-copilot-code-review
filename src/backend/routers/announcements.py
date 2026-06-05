@@ -97,8 +97,12 @@ def create_announcement(
             status_code=400, detail="Invalid date format. Use YYYY-MM-DD"
         )
 
+    message = message.strip()
+    if not message:
+        raise HTTPException(status_code=400, detail="Message is required")
+
     ann = {
-        "message": message.strip(),
+        "message": message,
         "start_date": start_date or None,
         "end_date": end_date,
         "created_by": teacher_username,
